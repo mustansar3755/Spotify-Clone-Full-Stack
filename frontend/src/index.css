@@ -8,3 +8,8 @@
   --color-priText:#FFFFFF;
   --color-secText:#B3B3B3;
 }
+
+/* ! Hide Scrollbar */
+::-webkit-scrollbar{
+  display: none;
+}
