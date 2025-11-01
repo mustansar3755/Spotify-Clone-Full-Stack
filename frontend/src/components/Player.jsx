@@ -1,20 +1,20 @@
 import React, { useContext } from "react";
-import { assets, songsData } from "../assets/assets";
+import { assets } from "../assets/assets";
 import { PlayerContext } from "../context/PlayerContext";
 
 const Player = () => {
-  const { seekBar, seekBg, playStatus, play, pause } =
+  const { seekBar, seekBg, playStatus, play, pause ,track,time} =
     useContext(PlayerContext);
 
   return (
     <div className=" h-[10%] bg-black flex items-center justify-between px-4  text-white">
       {/*! Left Section */}
       <div className=" hidden lg:flex items-center gap-3">
-        <img className=" w-12" src={songsData[0].image} alt="" />
+        <img className=" w-12" src={track.image} alt="" />
         <div className="">
-          <p className=" font-bold">{songsData[0].name}</p>
+          <p className=" font-bold">{track.name}</p>
           <p className=" text-secText font-light">
-            {songsData[0].desc.slice(0, 12)}
+            {track.desc.slice(0, 12)}
           </p>
         </div>
       </div>
@@ -47,7 +47,7 @@ const Player = () => {
           <img className=" w-5 cursor-pointer" src={assets.loop_icon} alt="" />
         </div>
         <div className=" flex items-center gap-4">
-          <p>1:03</p>
+          <p>{time.currentTime.minute}:{time.currentTime.second}</p>
           <div
             ref={seekBg}
             className=" max-w-[500px] w-[60vw] bg-gray-300 rounded-full"
@@ -57,7 +57,7 @@ const Player = () => {
               className=" w-0 border-none h-1 rounded-full bg-green-700"
             />
           </div>
-          <p>3:06</p>
+          <p>{time.totalTime.minute}:{time.totalTime.second}</p>
         </div>
       </div>
       {/* Last Right Section */}
