@@ -24,6 +24,9 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+
+      // 🔧 Disable Fast Refresh component-only export restriction
+      'react-refresh/only-export-components': 'off',
     },
   },
 ])
