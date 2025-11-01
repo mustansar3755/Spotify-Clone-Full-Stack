@@ -3,8 +3,17 @@ import { assets } from "../assets/assets";
 import { PlayerContext } from "../context/PlayerContext";
 
 const Player = () => {
-  const { seekBar, seekBg, playStatus, play, pause ,track,time} =
-    useContext(PlayerContext);
+  const {
+    seekBar,
+    seekBg,
+    playStatus,
+    play,
+    pause,
+    track,
+    time,
+    previousSong,
+    nextSong,
+  } = useContext(PlayerContext);
 
   return (
     <div className=" h-[10%] bg-black flex items-center justify-between px-4  text-white">
@@ -13,9 +22,7 @@ const Player = () => {
         <img className=" w-12" src={track.image} alt="" />
         <div className="">
           <p className=" font-bold">{track.name}</p>
-          <p className=" text-secText font-light">
-            {track.desc.slice(0, 12)}
-          </p>
+          <p className=" text-secText font-light">{track.desc.slice(0, 12)}</p>
         </div>
       </div>
       {/* Center Player */}
@@ -26,7 +33,12 @@ const Player = () => {
             src={assets.search_icon}
             alt=""
           />
-          <img className=" w-5 cursor-pointer" src={assets.prev_icon} alt="" />
+          <img
+            onClick={previousSong}
+            className=" w-5 cursor-pointer"
+            src={assets.prev_icon}
+            alt=""
+          />
           {playStatus ? (
             <img
               className=" w-5 cursor-pointer"
@@ -43,11 +55,18 @@ const Player = () => {
             />
           )}
 
-          <img className=" w-5 cursor-pointer" src={assets.next_icon} alt="" />
+          <img
+            onClick={nextSong}
+            className=" w-5 cursor-pointer"
+            src={assets.next_icon}
+            alt=""
+          />
           <img className=" w-5 cursor-pointer" src={assets.loop_icon} alt="" />
         </div>
         <div className=" flex items-center gap-4">
-          <p>{time.currentTime.minute}:{time.currentTime.second}</p>
+          <p>
+            {time.currentTime.minute}:{time.currentTime.second}
+          </p>
           <div
             ref={seekBg}
             className=" max-w-[500px] w-[60vw] bg-gray-300 rounded-full"
@@ -57,7 +76,9 @@ const Player = () => {
               className=" w-0 border-none h-1 rounded-full bg-green-700"
             />
           </div>
-          <p>{time.totalTime.minute}:{time.totalTime.second}</p>
+          <p>
+            {time.totalTime.minute}:{time.totalTime.second}
+          </p>
         </div>
       </div>
       {/* Last Right Section */}
