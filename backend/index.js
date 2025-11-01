@@ -4,12 +4,14 @@ import express from 'express'
 import cors from 'cors'
 import songRouter from './src/routes/songRouter.js';
 import connectDB from './src/config/db.js';
+import connectCloudinary from './src/config/cloudinary.js';
 
 
 const PORT = process.env.PORT || 4000;
 // App config
 const app = express();
-connectDB()
+connectDB();
+connectCloudinary()
 
 // middleware
 app.use(express.json())
