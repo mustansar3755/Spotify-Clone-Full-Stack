@@ -51,6 +51,13 @@ const PlayerContextProvider = (props) => {
       setPlayStatus(true);
     }
   };
+
+  const seekSong = (e) => {
+    // console.log(e.nativeEvent.offsetX);
+    audioRef.current.currentTime =
+      (e.nativeEvent.offsetX / seekBg.current.offsetWidth) *
+      audioRef.current.duration;
+  };
   //   Funtion to update time
 
   useEffect(() => {
@@ -88,6 +95,7 @@ const PlayerContextProvider = (props) => {
     playWithId,
     previousSong,
     nextSong,
+    seekSong,
   };
 
   return (

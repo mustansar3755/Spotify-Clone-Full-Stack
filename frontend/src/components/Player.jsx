@@ -13,6 +13,7 @@ const Player = () => {
     time,
     previousSong,
     nextSong,
+    seekSong
   } = useContext(PlayerContext);
 
   return (
@@ -68,6 +69,7 @@ const Player = () => {
             {time.currentTime.minute}:{time.currentTime.second}
           </p>
           <div
+          onClick={seekSong}
             ref={seekBg}
             className=" max-w-[500px] w-[60vw] bg-gray-300 rounded-full"
           >
