@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import Sidebar from './components/Sidebar'
 import Player from './components/Player'
 import Display from './components/Display'
-import { PlaterContext } from './context/PlayerContext'
+import {  PlayerContext } from './context/PlayerContext'
 
 const App = () => {
   
-  const {audioRef} = useContext(PlaterContext)
+  const {audioRef,track} = useContext(PlayerContext)
 
 
   return (
@@ -16,7 +16,7 @@ const App = () => {
         <Display/>
       </div>
       <Player/>
-      <audio ref={audioRef} preload='auto'></audio>
+      <audio ref={audioRef} src={track.file} preload='auto'></audio>
     </div>
   )
 }
